@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <table class="container"> 
+        <tbody>
+
+            <tr>
+                <td colspan="4" class="result_camp_container">
+                    <p id="result_camp"></p>
+                </td>
+            </tr>
+
+            <tr>
+                <td class="container_btn">
+                    <button class="btn highlight" onclick="limpar()">C</button>
+                </td>
+                <td class="container_btn">
+                    <button class="btn highlight" onclick="apagarUltimo()">&#8592;</button>
+                </td>
+                <td class="container_btn">
+                    <button class="btn highlight" onclick="insert('%')">&percnt;</button>
+                </td>
+                <td class="container_btn">
+                    <button class="btn highlight" onclick="insert('/')">&divide;</button>
+                </td>
+            </tr>
+
+            <tr>
+                <td class="container_btn">
+                    <button class="btn" onclick="insert('7')">7</button>
+                </td>
+                <td class="container_btn">
+                    <button class="btn" onclick="insert('8')">8</button>
+                </td>
+                <td class="container_btn">
+                    <button class="btn" onclick="insert('9')">9</button>
+                </td>
+                <td class="container_btn">
+                    <button class="btn highlight" onclick="insert('*')">&#215;</button>
+                </td>
+            </tr>
+
+            <tr>
+                <td class="container_btn">
+                    <button class="btn" onclick="insert('4')">4</button>
+                </td>
+                <td class="container_btn">
+                    <button class="btn" onclick="insert('5')">5</button>
+                </td>
+                <td class="container_btn">
+                    <button class="btn" onclick="insert('6')">6</button>
+                </td>
+                <td class="container_btn">
+                    <button class="btn highlight" onclick="insert('-')">-</button>
+                </td>
+            </tr>
+
+            <tr>
+                <td class="container_btn">
+                    <button class="btn" onclick="insert('1')">1</button>
+                </td>
+                <td class="container_btn">
+                    <button class="btn" onclick="insert('2')">2</button>
+                </td>
+                <td class="container_btn">
+                    <button class="btn" onclick="insert('3')">3</button>
+                </td>
+                <td class="container_btn">
+                    <button class="btn highlight" onclick="insert('+')">+</button>
+                </td>
+            </tr>
+
+            <tr>
+                <td class="container_btn">
+                </td>
+                <td class="container_btn zero">
+                    <button class="btn" onclick="insert('0')">0</button>
+                </td>
+                <td class="container_btn">
+                    <button class="btn" onclick="insert(',')">,</button>
+                </td>
+                <td class="container_btn">
+                    <button class="btn highlight" onclick="calcular()">=</button>
+                </td>
+            </tr>
+    </table>
+
+    <script>
+        function insert(numero){
+            var result_camp = document.getElementById('result_camp')
+            result_camp.textContent += numero;
+        }
+
+        function limpar() {
+            var resultado = document.getElementById('result_camp');
+            resultado.textContent = '';
+        }
+
+        function apagarUltimo() {
+            var resultado = document.getElementById('result_camp');
+            // Obtém o texto atual menos o último caractere
+            var novoConteudo = resultado.textContent.slice(0, -1);
+            resultado.textContent = novoConteudo;
+        }
+
+        function calcular() {
+            var resultado = document.getElementById('result_camp');
+            try {
+                resultado.textContent = eval(resultado.textContent);
+            } catch (error) {
+                resultado.textContent = 'Erro';
+            }
+        }
+    </script>
+</body>
+</html>
